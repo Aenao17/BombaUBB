@@ -20,12 +20,15 @@ import java.util.Optional;
 
 public class Main extends Application {
 
+    private MenuRepository repoMenu;
+    private PaymentRepository payRepo;
+    private PizzaService service;
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        MenuRepository repoMenu=new MenuRepository();
-        PaymentRepository payRepo= new PaymentRepository();
-        PizzaService service = new PizzaService(repoMenu, payRepo);
+        this.repoMenu=new MenuRepository();
+        this.payRepo= new PaymentRepository();
+        this.service = new PizzaService(repoMenu, payRepo);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/mainFXML.fxml"));
         //VBox box = loader.load();
@@ -61,7 +64,7 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(box));
         primaryStage.show();
         KitchenGUI kitchenGUI = new KitchenGUI();
-        kitchenGUI.KitchenGUI();
+        kitchenGUI.KitchenGUIMethod();
     }
 
     public static void main(String[] args) { launch(args);

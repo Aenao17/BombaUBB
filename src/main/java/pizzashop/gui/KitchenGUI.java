@@ -8,13 +8,15 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.WindowEvent;
+import pizzashop.controller.KitchenGUIController;
+
 import java.io.IOException;
 import java.util.Optional;
 
 public class KitchenGUI {
-    public void KitchenGUI() {
+    public void KitchenGUIMethod() {
         VBox vBoxKitchen = null;
-
+        KitchenGUIController kitchenCtrl = new KitchenGUIController();
         try {
             vBoxKitchen = FXMLLoader.load(getClass().getResource("/fxml/kitchenGUIFXML.fxml"));
         } catch (IOException e) {

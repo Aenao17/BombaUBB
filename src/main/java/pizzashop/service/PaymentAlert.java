@@ -44,16 +44,20 @@ public class PaymentAlert implements PaymentOperation {
         ButtonType cancel = new ButtonType("Cancel");
         paymentAlert.getButtonTypes().setAll(cardPayment, cashPayment, cancel);
         Optional<ButtonType> result = paymentAlert.showAndWait();
-        if (result.get() == cardPayment) {
-            cardPayment();
-            service.addPayment(tableNumber, PaymentType.Card,totalAmount);
-        } else if (result.get() == cashPayment) {
-            cashPayment();
-            service.addPayment(tableNumber, PaymentType.Cash,totalAmount);
-        } else if (result.get() == cancel) {
-             cancelPayment();
-        } else {
-            cancelPayment();
+        try {
+            if (result.get() == cardPayment) {
+                cardPayment();
+                service.addPayment(tableNumber, PaymentType.Card, totalAmount);
+            } else if (result.get() == cashPayment) {
+                cashPayment();
+                service.addPayment(tableNumber, PaymentType.Cash, totalAmount);
+            } else if (result.get() == cancel) {
+                cancelPayment();
+            } else {
+                cancelPayment();
+            }
+        }catch(Exception e){
+            System.out.println("Payment option needed!");
         }
     }
 }

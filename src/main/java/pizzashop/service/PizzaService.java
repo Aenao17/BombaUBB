@@ -23,6 +23,11 @@ public class PizzaService {
     public List<Payment> getPayments(){return payRepo.getAll(); }
 
     public void addPayment(int table, PaymentType type, double amount){
+
+        if(table <= 0 || amount <=0)
+        {
+            throw new IllegalArgumentException("Table number and amount must be greater than 0");
+        }
         Payment payment= new Payment(table, type, amount);
         payRepo.add(payment);
     }

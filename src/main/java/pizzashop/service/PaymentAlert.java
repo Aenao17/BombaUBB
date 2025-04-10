@@ -34,7 +34,7 @@ public class PaymentAlert implements PaymentOperation {
         System.out.println("Payment choice needed...");
         System.out.println(line);
     }
-      public void showPaymentAlert(int tableNumber, double totalAmount ) {
+    public void showPaymentAlert(int tableNumber, double totalAmount ) {
         Alert paymentAlert = new Alert(Alert.AlertType.CONFIRMATION);
         paymentAlert.setTitle("Payment for Table "+tableNumber);
         paymentAlert.setHeaderText("Total amount: " + totalAmount);

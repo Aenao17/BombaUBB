@@ -32,7 +32,6 @@ class PizzaServiceTest {
     }
 
     //Teste ECP ~ Equivalence Class Partitioning
-
     @Test
     @DisplayName("ECP Valid: table=1, amount=100")
     @Tag("ECP")

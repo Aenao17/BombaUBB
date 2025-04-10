@@ -1,5 +1,7 @@
 package pizzashop.model;
 
+import java.util.Objects;
+
 public class Payment {
     private int tableNumber;
     private PaymentType type;
@@ -25,7 +27,6 @@ public class Payment {
     public void setType(PaymentType type) {
         this.type = type;
     }
-
     public double getAmount() {
         return amount;
     }
@@ -34,8 +35,11 @@ public class Payment {
         this.amount = amount;
     }
 
+
     @Override
     public String toString() {
         return tableNumber + ","+type +"," + amount;
     }
+
+
 }

@@ -58,7 +58,7 @@ class PizzaServiceTest {
                 () -> service.addPayment(0,PaymentType.Card,100),
                 "Expected addPayment to throw, but it didn't."
         );
-        assertTrue(thrown.getMessage().contains("Table number and amount must be greater than 0"));
+        assertTrue(thrown.getMessage().contains("Table number and amount must be greater than 0."));
     }
 
     @Test
@@ -72,7 +72,7 @@ class PizzaServiceTest {
                 () -> service.addPayment(-1, PaymentType.Card, -50),
                 "Expected addPayment() to throw, but it didn't"
         );
-        assertTrue(thrown.getMessage().contains("Table number and amount must be greater than 0"));
+        assertTrue(thrown.getMessage().contains("Table number and amount must be greater than 0."));
     }
 
     //Teste BVA ~ Boundary Value Analysis
@@ -107,7 +107,7 @@ class PizzaServiceTest {
                 () -> service.addPayment(table, PaymentType.Card, amount),
                 "Expected addPayment() to throw, but it didn't"
         );
-        assertTrue(exceptie.getMessage().contains("Table number and amount must be greater than 0"));
+        assertTrue(exceptie.getMessage().contains("Table number and amount must be greater than 0."));
     }
 
 

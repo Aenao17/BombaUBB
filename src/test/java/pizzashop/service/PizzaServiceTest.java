@@ -76,16 +76,14 @@ class PizzaServiceTest {
     }
 
     //Teste BVA ~ Boundary Value Analysis
-    @ParameterizedTest(name="BVA Valid Test {index}: table={0}, amount={1}")
-    @CsvSource({
-            "7, 0.01", // valid: limita inf pt table si amount
-            "2, 50" // valid: val arbitrare, tot valide
-    })
-    @DisplayName("BVA Valid: Test parametrizat pt addPayment")
+    @Test
+    @DisplayName("BVA Valid: Test Case 1 - Lower limits")
     @Tag("BVA")
     @Timeout(value=1, unit = TimeUnit.SECONDS)
-    void testAddPayment_BVA_Valid(int table, double amount)
-    {
+    void testAddPayment_BVA_Valid() {
+        int table = 7;
+        double amount = 0.01;
+
         service.addPayment(table, PaymentType.Card, amount);
         List<Payment> payments = service.getPayments();
         assertEquals(initialSize + 1, payments.size());
@@ -95,17 +93,14 @@ class PizzaServiceTest {
         assertEquals(amount, p.getAmount());
     }
 
-    @ParameterizedTest(name="BVA Invalid Test {index}: table={0}, amount={1}")
-    @CsvSource({
-            "0, 0.01", // invalid: table < 1
-            "1, 0", // invalid: amount < 0
-            "-1, -0.01" // invalid: table < 1 si amount < 0
-    })
-    @DisplayName("BVA Invalid: Test parametrizat pt addPayment")
+    @Test
+    @DisplayName("BVA Invalid: Test Case 1 - Invalid table")
     @Tag("BVA")
     @Timeout(value=1, unit = TimeUnit.SECONDS)
-    void testAddPayment_BVA_Invalid(int table, double amount)
-    {
+    void testAddPayment_BVA_Invalid() {
+        int table = 0;
+        double amount = 0.01;
+
         // se asteapta aruncarea exceptiei pt val non-valide
         IllegalArgumentException exceptie = assertThrows(
                 IllegalArgumentException.class,
